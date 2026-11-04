@@ -1,0 +1,26 @@
+name: go-fann
+channels:
+  - rapidsai
+  - conda-forge
+  - nvidia
+  - nodefaults
+dependencies:
+  - python=3.12.12
+  - numpy=2.2.5
+  - cuda-version=12.8
+  - cuda-nvcc=12.8.93
+  - cuda-cudart-dev=12.8.90
+  - cuda-driver-dev=12.8.90
+  - cuda-python=12.9.4
+  - cuda-bindings=12.9.4
+  - libcuvs=26.02.00
+  - libraft=26.02.00
+  - librmm=26.02.00
+  - rapids-logger=0.2.3
+  - nlohmann_json=3.11.*
+  - openssl=3.*
+  - pip
+  - pip:
+      - pyarrow==23.0.1
+      - duckdb==1.5.2
+      - nltk==3.9.4

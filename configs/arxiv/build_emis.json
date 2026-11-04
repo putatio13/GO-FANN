@@ -1,0 +1,13 @@
+{
+  "mode": "build-graph",
+  "graph_builder": {
+    "builder": "cagra_stream"
+  },
+  "dim": 4096,
+  "degree": 32,
+  "row_limit": 2735264,
+
+  "graph_path": "artifacts/arxiv/labels/graph.bin",
+  "base_vector_path": "data/arxiv/base.fvecs",
+  "data_label_spmat_path": "data/arxiv/base.spmat"
+}

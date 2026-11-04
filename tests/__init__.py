@@ -1,0 +1,1 @@
+"""GO-FANN tests package."""

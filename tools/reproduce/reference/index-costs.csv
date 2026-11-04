@@ -1,0 +1,8 @@
+dataset,method,component,stored_bytes,stored_gib,build_measured_seconds,build_reported_seconds,build_minutes,build_evidence,timer_scope,build_stage_seconds,build_process_seconds,estimate_low_seconds,estimate_high_seconds
+LAION100M,GO-FANN (label),G,68628267008,63.91505432128906,31443.81,31443.81,524.0635,measured,stage,31443.81,,,
+LAION100M,BigFANN,G,33199588107,30.91952587198466,35509,35509,591.8166666666667,measured,process,,35509,,
+LAION100M,CGIF,G,27625826552,25.728555910289288,34821,34821,580.35,measured,process,,34821,,
+LAION100M,GO-FANN (range),G,51191525376,47.67582321166992,10202.172,10202.172,170.0362,measured,stage,10202.172,,,
+LAION100M,Faiss IVF-PQ,PQ,7234209972,6.737383056432009,10501,10501,175.01666666666668,measured,process,,10501,,
+LAION100M,Milvus HNSW,I,113117055047,105.34846693929285,,18000,300.0,estimated_interrupted_sessions,import+construction+recovery+unseparated_wait,,,16200.0,19800.0
+LAION100M,Milvus IVF-PQ,I,18921771963,17.622273380868137,,90000,1500.0,estimated_interrupted_sessions,import+construction+recovery+unseparated_wait,,,86400,93600

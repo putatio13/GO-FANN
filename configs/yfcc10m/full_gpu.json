@@ -1,0 +1,24 @@
+{
+  "mode": "search",
+  "backend": "full_gpu",
+  "dim": 192,
+  "degree": 32,
+  "row_limit": 10000000,
+
+  "graph_path": "artifacts/yfcc10m/labels/graph.bin",
+  "group_path": "artifacts/yfcc10m/labels/graph.identity.groups",
+  "metadata_sidecar_path": "artifacts/yfcc10m/labels/graph.metadata",
+  "base_vector_path": "data/yfcc10m/base.u8bin",
+  "data_label_spmat_path": "data/yfcc10m/base.spmat",
+  "query_vector_path": "data/yfcc10m/queries/categorical/query.u8bin",
+  "query_label_spmat_path": "data/yfcc10m/queries/categorical/query.spmat",
+
+  "full_filter": true,
+  "search_early_stop_mode": "adaptive",
+
+  "search_queue_size": 192,
+  "search_finish_count": 100,
+  "warmup_runs": 2,
+  "timed_runs": 3,
+  "output_csv_path": "outputs/yfcc10m_full_gpu.csv"
+}

@@ -1,0 +1,41 @@
+{
+  "mode": "benchmark",
+  "backend": "rabitq",
+  "dim": 4096,
+  "degree": 32,
+  "row_limit": 2735264,
+
+  "graph_path": "artifacts/arxiv/range/graph.bin",
+  "group_path": "artifacts/arxiv/range/graph.identity.groups",
+  "metadata_sidecar_path": "artifacts/arxiv/range/graph.metadata",
+  "base_vector_path": "data/arxiv/base.fvecs",
+  "data_label_spmat_path": "data/arxiv/range/base.virtual.spmat",
+  "rabitq_artifact_path": "artifacts/arxiv/rabitq/rabitq.b1.bin",
+  "query_vector_path": "data/arxiv/queries/range/query.fvecs",
+  "query_label_spmat_path": "data/arxiv/queries/range/query.spmat",
+  "base_range_fbin_path": "data/arxiv/range/base_range.fbin",
+  "query_range_path": "data/arxiv/queries/range/query_range.bin",
+  "range_label_manifest_path": "data/arxiv/range/manifest.json",
+
+  "full_filter": true,
+  "host_service_threads": 8,
+  "highfreq_rerank_threads": 16,
+  "lowfreq_full_filter_mode": "post",
+  "search_early_stop_mode": "adaptive",
+  "rabitq_lowfreq_gpu_posting": true,
+  "rabitq_request_mode": "batch_ring",
+  "rabitq_posting_stream_batch_size": 8192,
+
+  "predicate_bias_alpha": 0.0,
+  "highfreq_rerank_mode": "cpu",
+  "highfreq_rerank_streaming": true,
+  "rabitq_posting_streaming": true,
+
+  "search_queue_size": 128,
+  "search_finish_count": 100,
+  "benchmark_queue_sizes": "16,32,64,128,192,256,384,512",
+  "quick_filter_bonus": 1.0,
+  "warmup_runs": 2,
+  "timed_runs": 3,
+  "benchmark_output": "outputs/arxiv_range.csv"
+}

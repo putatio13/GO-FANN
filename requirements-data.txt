@@ -1,0 +1,7 @@
+# Optional LAION parquet materialization and exact ground-truth generation
+--extra-index-url https://download.pytorch.org/whl/cu126
+-r requirements.txt
+pyarrow==23.0.1
+torch==2.10.0+cu126
+duckdb==1.5.2
+nltk==3.9.4

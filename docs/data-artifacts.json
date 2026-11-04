@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "workloads": {
+    "categorical": 10000,
+    "range": 10000,
+    "string_exact": 10000,
+    "string_fuzzy": 10000,
+    "hybrid": 50000,
+    "range_label_and": 15000
+  },
+  "packages": [
+    {
+      "name": "queries",
+      "assets": [
+        {
+          "name": "go-fann-laion100m-queries.tar.gz",
+          "bytes": 233134813,
+          "sha256": "a85a9ea2b15aabda9c8972b4fbbe475afcd342d89ccb48edbc0e46d45f81a17c"
+        }
+      ],
+      "unpacked_bytes": 705965154,
+      "files": [
+        {
+          "path": "data/laion100m/queries/categorical/query.hvecs",
+          "bytes": 10280000,
+          "sha256": "2a4526cae236888e4e257d12901cb5df3b3c8db8c504b07b6436fa0ca9fdb0f6"
+        },
+        {
+          "path": "data/laion100m/queries/categorical/query_manifest.jsonl",
+          "bytes": 23456973,
+          "sha256": "2b16164637d13b7fca2e5ac3cacd93d576174c1c9d51b3e4056c565932012cfb"
+        },
+        {
+          "path": "data/laion100m/queries/categorical/gt/gt.single.top10.ibin",
+          "bytes": 400008,
+          "sha256": "fdaf260774d28f6ac451a4a4b0107873435ff35bdb41bc47dbd9953ed11021d0"
+        },
+        {
+          "path": "data/laion100m/queries/categorical/gt/gt.single.top10.dist.fbin",
+          "bytes": 400008,
+          "sha256": "93b5eddcbd0c8eab37de89a24135c55feb915f6c8c808bf87657663977873823"
+        },
+        {
+          "path": "data/laion100m/queries/categorical/gt/gt.single.top100.ibin",
+          "bytes": 4000008,
+          "sha256": "8f1f18e311d0413fcc7318735b2a548bccba3daeeb65aec44504f1544a98fa15"
+        },
+        {
+          "path": "data/laion100m/queries/categorical/gt/gt.single.top100.dist.fbin",
+          "bytes": 4000008,
+          "sha256": "c2e3175fd70cce03517dd6fa1d40e902ea12a13661e7c375b0155f0e022ca0de"
+        },
+        {
+          "path": "data/laion100m/queries/range/query.hvecs",
+          "bytes": 10280000,
+          "sha256": "6e9b5f5230364e491b098e36f269673c583d1a0d567901851466c9fbe5d39afb"
+        },
+        {
+          "path": "data/laion100m/queries/range/query_manifest.jsonl",
+          "bytes": 19169135,
+          "sha256": "56988dbfdd7cd4480136d56513dc4e4e7197487dde56c3d2ce303d514239f001"
+        },
+        {
+          "path": "data/laion100m/queries/range/query_range.bin",
+          "bytes": 240008,
+          "sha256": "082c56c429975f57177ec8f973a768411881cdf1abe367f2d017b36e9e7bfb7e"
+        },
+        {
+          "path": "data/laion100m/queries/range/query.spmat",
+          "bytes": 80032,
+          "sha256": "5d8e648300f7e4c7e567ba4046763838673a69fdc9c9b583abcc0d89c7301f4e"
+        },
+        {
+          "path": "data/laion100m/queries/range/gt/gt.range.top10.ibin",
+          "bytes": 400008,
+          "sha256": "88007b8cfadbb625ac9d1c9b9d048f936f41ca4846f70fea27c7cf96f585bd0e"
+        },
+        {
+          "path": "data/laion100m/queries/range/gt/gt.range.top10.dist.fbin",
+          "bytes": 400008,
+          "sha256": "676b3fd356ec598abeef778e9619515c5f76cce0ec728e788da82844b97597ee"
+        },
+        {
+          "path": "data/laion100m/queries/range/gt/gt.range.top100.ibin",
+          "bytes": 4000008,
+          "sha256": "0e45bf20d6e2f47973b882bd40b39f01b367d1fe1e5d84c2e8df38832bbb039e"
+        },
+        {
+          "path": "data/laion100m/queries/range/gt/gt.range.top100.dist.fbin",
+          "bytes": 4000008,
+          "sha256": "b07302a996055089409e78fa8987e335921b3901d237bc398299378472ef6b3c"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/query.hvecs",
+          "bytes": 10280000,
+          "sha256": "480ec2938dd22276394173e3eac8982e339cfba44c1d2422a434ffa08c07f4a7"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/query_manifest.jsonl",
+          "bytes": 23155341,
+          "sha256": "d2f820d682e9ad84cf660fb16925e1734ea6edc73e4ac94ae049a2933bf8d036"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/gt/gt.string.top10.ibin",
+          "bytes": 400008,
+          "sha256": "19790f3203f86ff2de7b4c6b58a90fba59e1d776258abd87393946d6da569f75"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/gt/gt.string.top10.dist.fbin",
+          "bytes": 400008,
+          "sha256": "28c74f592a65629be370199cd731150256d1574eed427a039f00471ea2891a9b"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/gt/gt.string.top100.ibin",
+          "bytes": 4000008,
+          "sha256": "06a701c1a6d247895b121a6b538b20aa34a1b6c4b5e1aa0a806be2f27f6b6c3e"
+        },
+        {
+          "path": "data/laion100m/queries/string_exact/gt/gt.string.top100.dist.fbin",
+          "bytes": 4000008,
+          "sha256": "3e86c452333a12812fec65ae8e00cf2c09f10ff15009e53c5b3fe67961b6a95d"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/query.hvecs",
+          "bytes": 10280000,
+          "sha256": "879a7348cec256da9a0cf974f1f1d1f3a844815b0a299e4ee31f930d034f5dee"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/query_manifest.jsonl",
+          "bytes": 34046467,
+          "sha256": "a82fd64ab0a5a2ac842e35a57c36b0beff0301abef5cae668e275c3130a1440c"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/gt/gt.string.top10.ibin",
+          "bytes": 400008,
+          "sha256": "e6d0fc288d71e603eb23d77d1cc9fd1af6fee44fc05b11b273fa2260fb379abd"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/gt/gt.string.top10.dist.fbin",
+          "bytes": 400008,
+          "sha256": "8ff5845645c08b47cffed0fe6d02bfbd50f602658e0f973340f28ac4e9a8b8f1"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/gt/gt.string.top100.ibin",
+          "bytes": 4000008,
+          "sha256": "5f85491f0d650b6720e69cfe90483ae3a3bdef43f0d7dc90663870dba45c8f51"
+        },
+        {
+          "path": "data/laion100m/queries/string_fuzzy/gt/gt.string.top100.dist.fbin",
+          "bytes": 4000008,
+          "sha256": "163710535cf80c37f7f8b4d400c1a6ac4ad7bf1f7675fbb45dbbb5da61c8c22f"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/query.hvecs",
+          "bytes": 51400000,
+          "sha256": "fb5101f9381185bc1d518f431f36c9847002a1b000718c2c1a0641d973141711"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/query_manifest.jsonl",
+          "bytes": 314317205,
+          "sha256": "962db785e787113f75f6d63762b61e105f5e906f9d29d4170f8a4c98eb3dcb09"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/query_range.bin",
+          "bytes": 1200008,
+          "sha256": "0eeb1582a5a052a0c939afc05c399bd48fe8163a574bdab1967f7bb39e8af254"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/gt/gt.hybrid.top10.ibin",
+          "bytes": 2000008,
+          "sha256": "7dd069ff12121f279ea89ecf2c454ad9305c481dbd98eccf381fc742473da104"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/gt/gt.hybrid.top10.dist.fbin",
+          "bytes": 2000008,
+          "sha256": "dcb130a31005ae1a3a3f4148bfdda5560329898196405b526bf8455d6019aa91"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/gt/gt.hybrid.top100.ibin",
+          "bytes": 20000008,
+          "sha256": "73b276002ba89e4e360dbe08bc4ae7cde885b10082580ad953c0eca053d852c8"
+        },
+        {
+          "path": "data/laion100m/queries/hybrid/gt/gt.hybrid.top100.dist.fbin",
+          "bytes": 20000008,
+          "sha256": "1d0b2fc0c51fb652cac89181bfa3af8a5352900279eed54c72dc963ed260f536"
+        },
+        {
+          "path": "data/laion100m/queries/range_label_and/query.hvecs",
+          "bytes": 15420000,
+          "sha256": "805bfe1f4032538db1a4848168dd2b02f2e8fe493edc1ad60730bea62c0b36ab"
+        },
+        {
+          "path": "data/laion100m/queries/range_label_and/query_manifest.jsonl",
+          "bytes": 101599801,
+          "sha256": "201bff72285ee685ac93de4906e52c2d22bb939702c8048f50daee092c883fc2"
+        },
+        {
+          "path": "data/laion100m/queries/range_label_and/query_range.bin",
+          "bytes": 360008,
+          "sha256": "81d3f81a5cca9672b121bbc154d73de25ff8d74dd4857053b57ac4698ab89534"
+        },
+        {
+          "path": "data/laion100m/queries/range_label_and/gt/gt.top10.ibin",
+          "bytes": 600008,
+          "sha256": "4d5be5eabb3c4b1e796ad68ae0c9acac653387698d71de777d0c4a47941c6746"
+        },
+        {
+          "path": "data/laion100m/queries/range_label_and/gt/gt.top10.dist.fbin",
+          "bytes": 600008,
+          "sha256": "a5eb41822aa856c246eaf9a1b9dd00b397642af69483e6e972d9bf25b5d6709e"
+        }
+      ]
+    },
+    {
+      "name": "metadata",
+      "assets": [
+        {
+          "name": "go-fann-laion100m-metadata.tar.gz.part000",
+          "bytes": 1900000000,
+          "sha256": "caef904e9e413a9d21ab9a951075e8509d6af9f60170a1cff085f4e630d51a18"
+        },
+        {
+          "name": "go-fann-laion100m-metadata.tar.gz.part001",
+          "bytes": 270950287,
+          "sha256": "fb71ad1c2880ffd442c0e5f0d5cf6c5cea26221509df4ecce0ab6fb4123730f1"
+        }
+      ],
+      "unpacked_bytes": 4505217689,
+      "files": [
+        {
+          "path": "data/laion100m/token_map.parquet",
+          "bytes": 79477795,
+          "sha256": "1f8c5e59c32781c177a70e1057740f36b9bac42763aef76611a63dd951631f3e"
+        },
+        {
+          "path": "data/laion100m/category_canonicalization.csv",
+          "bytes": 11059,
+          "sha256": "1a7d94244e1f06d7471c724425cafef2c9524962b6635653313dc2c9fb553ce4"
+        },
+        {
+          "path": "data/laion100m/base.spmat",
+          "bytes": 3537609168,
+          "sha256": "a0797d32fe38a0ce1959e000741dfb8fe7c78bf12b1beb84684521e3806748df"
+        },
+        {
+          "path": "data/laion100m/range/base_range.fbin",
+          "bytes": 800000008,
+          "sha256": "8e8bbcdde1770c75a102cdb83413cb92ff893b072317cc100f69dc07ce884b5d"
+        },
+        {
+          "path": "data/laion100m/range/manifest.json",
+          "bytes": 147299,
+          "sha256": "ddaa0aa8178781613bfff005de3aa92b48f44ca761c5be5f15b76a8ee11eeba2"
+        },
+        {
+          "path": "data/laion100m/token_operator_index.bin",
+          "bytes": 87972360,
+          "sha256": "3c818a8f6d41a54222519a0b9fb938bbb00eb984a474f30779c91be960a021be"
+        }
+      ]
+    },
+    {
+      "name": "range-indexes",
+      "assets": [
+        {
+          "name": "go-fann-laion100m-range-indexes.tar.gz",
+          "bytes": 928178950,
+          "sha256": "7885b51e5265d973a2d3c34e33fa4d3fb96632008e53a062b53cea64010795a9"
+        }
+      ],
+      "unpacked_bytes": 4800197152,
+      "files": [
+        {
+          "path": "data/laion100m/range/base.virtual.spmat",
+          "bytes": 4000000032,
+          "sha256": "a4450705740609e58df24ca20555214b160e97de0c266aec4020af0be50c7da6"
+        },
+        {
+          "path": "artifacts/laion100m/range/ordered_postings.bin",
+          "bytes": 800197120,
+          "sha256": "22ce7ce2dc2acd074aa8cd4fc28bc8bdc47fd974b509ff4c6323a62ccb0540e9"
+        }
+      ]
+    },
+    {
+      "name": "arxiv-metadata",
+      "assets": [
+        {
+          "name": "go-fann-arxiv-metadata.tar.gz",
+          "bytes": 17971415,
+          "sha256": "521465ebc5a9249c324dea1199b0e69c074f00da78eb904e561abfdb8e715558"
+        }
+      ],
+      "files": [
+        {
+          "path": "data/arxiv/base.spmat",
+          "bytes": 51906664,
+          "sha256": "e5156d9429bb356e939719ce03000bb80a4643d2bbf584bd7a270dd23fd84717"
+        },
+        {
+          "path": "data/arxiv/queries/emis/query.spmat",
+          "bytes": 160032,
+          "sha256": "05d09748efea1635ee9ad117e9ef43c4082175c0d6270cb847f83e0243f8392e"
+        },
+        {
+          "path": "data/arxiv/queries/range/query.spmat",
+          "bytes": 80032,
+          "sha256": "dca69c824148f1645c5fc1dae70193db6115c4ba2b7233b4a0b2dcc4015f69a5"
+        },
+        {
+          "path": "data/arxiv/queries/range/query_range.bin",
+          "bytes": 120004,
+          "sha256": "922e1a972dfdd6ace1cce14ea8145f5218ec0e54b7d23463c1055de27c3e704b"
+        },
+        {
+          "path": "data/arxiv/range/base.virtual.spmat",
+          "bytes": 87528480,
+          "sha256": "04e2b9da7c48743f9cd87b748749752b30fb8861c1390203ee634443b26813e1"
+        },
+        {
+          "path": "data/arxiv/range/base_range.fbin",
+          "bytes": 10941064,
+          "sha256": "ffd36f038b6d8b02697abfac0226b2a6b3c324bc9215654f58ec7809ab1fa99a"
+        },
+        {
+          "path": "data/arxiv/range/manifest.json",
+          "bytes": 3467,
+          "sha256": "78c9bb804e79404962952a976754863ca3ae62f87ad4080bc18ffd1fe264b128"
+        }
+      ],
+      "unpacked_bytes": 150739743
+    }
+  ],
+  "checksum_asset": {
+    "name": "SHA256SUMS",
+    "bytes": 516,
+    "sha256": "edf4bab9cf0e0d5dd1543622bf17808cd46f704394e99a117667cb38b460b775"
+  }
+}

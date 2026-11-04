@@ -1,0 +1,14 @@
+{
+  "mode": "build-graph",
+  "graph_builder": {
+    "builder": "cagra_stream"
+  },
+  "dim": 512,
+  "degree": 32,
+  "row_limit": 100000000,
+  "specificity_threshold": 10000,
+
+  "graph_path": "artifacts/laion100m/labels/graph.bin",
+  "base_vector_path": "data/laion100m/base.hvecs",
+  "data_label_spmat_path": "data/laion100m/base.spmat"
+}

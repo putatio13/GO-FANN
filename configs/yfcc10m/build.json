@@ -1,0 +1,13 @@
+{
+  "mode": "build-graph",
+  "graph_builder": {
+    "builder": "cagra_stream"
+  },
+  "dim": 192,
+  "degree": 32,
+  "row_limit": 10000000,
+
+  "graph_path": "artifacts/yfcc10m/labels/graph.bin",
+  "base_vector_path": "data/yfcc10m/base.u8bin",
+  "data_label_spmat_path": "data/yfcc10m/base.spmat"
+}

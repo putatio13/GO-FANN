@@ -1,0 +1,14 @@
+# Local datasets, generated artifacts and build products
+/data/
+/downloads/
+/artifacts/
+/outputs/
+/build/
+/src/config.json
+/src/go-fann
+*.o
+*.o.tmp
+*.log
+__pycache__/
+.pytest_cache/
+.venv/
