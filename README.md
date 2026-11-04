@@ -10,11 +10,11 @@ GO-FANN is a CPU–GPU cooperative filtered approximate nearest-neighbor search 
 
 ## Getting started
 
-1. [Create the Conda environment, build and run a synthetic example](docs/build.md) for the runtime and quantizers.
-2. [Prepare data and quantize vectors](scripts/README.md).
-3. [Choose a configuration, build graphs and run search](configs/README.md).
+1. [Follow the reproduction guide](REPRODUCE.md): synthetic check, first dataset run and figure/table commands.
+2. [Install the environment and build](docs/build.md), then [download prepared inputs and quantize vectors](scripts/README.md).
+3. [Select workload configurations](configs/README.md); use [profiling recipes](docs/profiling.md) for stage and kernel measurements.
 
-Run commands from the repository root; configuration paths are relative to the working directory. Run GPU jobs sequentially on an idle device. The [reproduction guide](REPRODUCE.md) maps experiments to commands and reference curves. Reference details: [input formats](docs/data-and-workflows.md) and [experiment parameters](docs/experiment-protocol.md).
+Run commands from the repository root; configuration paths are relative to the working directory. Run GPU jobs sequentially on an idle device. Reference details: [input formats](docs/data-and-workflows.md) and [experiment parameters](docs/experiment-protocol.md).
 
 ## Layout
 

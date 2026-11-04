@@ -2,7 +2,7 @@
 
 ## Environment
 
-Use Linux x86-64, an NVIDIA GPU and a CUDA 12.8-compatible NVIDIA driver. The native runtime uses C++17. Install GNU Make and a system GCC/G++ compiler with OpenMP support; the tested host compiler is GCC 12.2.0.
+Use Linux x86-64, an NVIDIA datacenter GPU supporting GPUDirect RDMA/GDRCopy and a CUDA 12.8-compatible NVIDIA driver. The native runtime uses C++17. Install GNU Make and a system GCC/G++ compiler with OpenMP support; the tested host compiler is GCC 12.2.0.
 
 Create the environment from the repository root:
 
@@ -94,4 +94,4 @@ python tests/native/rabitq_predicate_cli_test.py ./src/go-fann
 The data suite exercises query generation, metadata, GT helpers, evaluation and figure inputs with small fixtures. The portable Python tests include trace conversion and independent overlap-accounting oracles. Host tests exercise the actual predicate policy, scheduling and trace recorder. The CLI check uses the built binary to validate both PQ and RaBitQ options without loading data or initializing CUDA. Source verification uses only the Python standard library. `make test-source-contracts` checks structural invariants in native source; numerical and execution checks are provided by the CPU and GPU tests above. Additional targets are listed in `src/Makefile`.
 
 For profiling an experiment and plotting its stage breakdown, follow the
-[capture and conversion commands](../REPRODUCE.md#search-window-breakdown).
+[capture and conversion commands](profiling.md#search-window-breakdown).

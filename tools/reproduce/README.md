@@ -34,7 +34,7 @@ To plot a selected workload from a new capture, add `--workloads yfcc10m`
 to the window command. Without this option, the window figure requires all
 eight workloads. `profile.py` converts completed native traces and matching
 timed-run CSVs into the window schema; follow the
-[capture and conversion commands](../../REPRODUCE.md#search-window-breakdown).
+[capture and conversion commands](../../docs/profiling.md#search-window-breakdown).
 The [placement and stage-collection instructions](../../REPRODUCE.md#rerank-placement)
 define the placement variants and explain which measurements can be collected
 with the released runtime.

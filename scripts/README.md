@@ -2,22 +2,9 @@
 
 Run from the repository root. Create the [Conda environment](../docs/build.md) for vector and metadata preparation. For GPU ground-truth generation, also install the PyTorch version shown there. `requirements.txt` and `requirements-data.txt` list dependencies for existing environments. See [input formats](../docs/data-and-workflows.md) for file layouts and row-order requirements.
 
-## 1. Prepare vectors and predicates
+## 1. Use prepared inputs (recommended)
 
-Use the [BigANN YFCC dataset definitions](https://github.com/harsha-simhadri/big-ann-benchmarks/blob/main/benchmark/datasets.py) and [arxiv-large dataset](https://huggingface.co/datasets/SPCL/arxiv-for-fanns-large). Place or link the downloaded files as follows:
-
-| Downloaded file | Local destination |
-| --- | --- |
-| YFCC `base.10M.u8bin` | `data/yfcc10m/base.u8bin` |
-| YFCC `base.metadata.10M.spmat` | `data/yfcc10m/base.spmat` |
-| YFCC `query.public.100K.u8bin` | `data/yfcc10m/queries/categorical/query.u8bin` |
-| YFCC `query.metadata.public.100K.spmat` | `data/yfcc10m/queries/categorical/query.spmat` |
-| YFCC `GT.public.ibin` | `data/yfcc10m/queries/categorical/gt.ibin` |
-| arxiv `database_vectors.fvecs` | `data/arxiv/base.fvecs` |
-| arxiv `query_vectors.fvecs` | `data/arxiv/queries/{emis,range}/query.fvecs` |
-| arxiv `ground_truth_emis.ivecs`, `ground_truth_r.ivecs` | Corresponding workload directory, retaining `.ivecs` |
-
-YFCC files are hosted under the [YFCC benchmark directory](https://dl.fbaipublicfiles.com/billion-scale-ann-benchmarks/yfcc100M/). Use the upstream arxiv vectors and GT listed above, preserving their row order.
+The packages supply LAION queries/GT and arxiv/LAION predicate metadata. YFCC inputs and arxiv query vectors/GT come from [upstream](#base-vectors-and-upstream-inputs). **Base vectors, graph indexes and quantized vectors are acquired or built separately.** Follow the sections in order; optional regeneration is in [Part 2](#2-generate-inputs-optional).
 
 ### Prepared queries and metadata
 
@@ -46,11 +33,24 @@ python -m tests.tools.verify_paper_inputs --root .
 
 Extract into a fresh data directory to preserve any existing inputs. Each package carries payload checksums; [the inventory](../docs/data-artifacts.json) also records archive and file identities. Query vectors, predicates and GT are supplied together in matching row order. For the standard experiments, proceed to vector acquisition, quantization and graph construction; no GT recomputation is needed.
 
-The supplied query package is the standard input for the experiments. The query-selection tools below consume user-provided atomic candidate manifests (`SOURCE_RANGE_MANIFEST`, `query_templates.jsonl` or `query_manifest.jsonl`); they do not generate those starting candidates from raw captions. Use the supplied queries to reproduce the experiments.
+### Base vectors and upstream inputs
 
-The preparation commands below support generating metadata, constructing predicate indexes and computing exact GT for your own inputs. Retain the supplied token map when preparing metadata for the supplied queries, so token IDs remain aligned.
+Use the [BigANN YFCC dataset definitions](https://github.com/harsha-simhadri/big-ann-benchmarks/blob/main/benchmark/datasets.py) and [arxiv-large dataset](https://huggingface.co/datasets/SPCL/arxiv-for-fanns-large). Place or link the downloaded files as follows:
 
-### LAION100M vectors
+| Downloaded file | Local destination |
+| --- | --- |
+| YFCC `base.10M.u8bin` | `data/yfcc10m/base.u8bin` |
+| YFCC `base.metadata.10M.spmat` | `data/yfcc10m/base.spmat` |
+| YFCC `query.public.100K.u8bin` | `data/yfcc10m/queries/categorical/query.u8bin` |
+| YFCC `query.metadata.public.100K.spmat` | `data/yfcc10m/queries/categorical/query.spmat` |
+| YFCC `GT.public.ibin` | `data/yfcc10m/queries/categorical/gt.ibin` |
+| arxiv `database_vectors.fvecs` | `data/arxiv/base.fvecs` |
+| arxiv `query_vectors.fvecs` | `data/arxiv/queries/{emis,range}/query.fvecs` |
+| arxiv `ground_truth_emis.ivecs`, `ground_truth_r.ivecs` | Corresponding workload directory, retaining `.ivecs` |
+
+YFCC files are hosted under the [YFCC benchmark directory](https://dl.fbaipublicfiles.com/billion-scale-ann-benchmarks/yfcc100M/). Use the upstream arxiv vectors and GT listed above, preserving their row order.
+
+#### LAION100M vectors
 
 LAION100M uses the first 100,000,000 **image embeddings** from [LAION-400M](https://laion.ai/blog/laion-400-open-dataset/), in numeric NPY shard order and original row order within each shard. Obtain the vectors and matching metadata from [Academic Torrents](https://academictorrents.com/details/34b94abbcefef5a240358b9acd7920c8b675aacc) using its [.torrent file](https://academictorrents.com/download/34b94abbcefef5a240358b9acd7920c8b675aacc.torrent). The torrent info hash is `34b94abbcefef5a240358b9acd7920c8b675aacc`.
 
@@ -64,6 +64,36 @@ python3 -m scripts.laion.base export-vectors \
 ```
 
 Shard sizes vary: this prefix uses all rows of shards 0–99 and 312,973 rows of shard 100. The exporter reads each NPY shape, writes FP16 `.hvecs` in chunks, and preserves values without normalization. Output size is 102,800,000,000 bytes (about 95.7 GiB). If the complete embeddings are already concatenated in the same order into one 2D NPY, pass that file to `--input` instead. Existing output files are protected; `--chunk-rows` controls conversion memory.
+
+### Quantize vectors
+
+[Build](../docs/build.md) the runtime and quantizers first. Select an idle GPU and use a new output directory; existing directories are protected. These commands produce the paths already used by the supplied configurations:
+
+```bash
+CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize pq \
+  --input data/yfcc10m/base.u8bin --output-dir artifacts/yfcc10m/pq \
+  --pq-dim 64 --training-rows 65536 --chunk-rows 8192 --seed 137
+CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize rabitq \
+  --input data/arxiv/base.fvecs --output-dir artifacts/arxiv/rabitq \
+  --n-lists 1024 --bits 1 --training-rows 262144 --chunk-rows 8192 --seed 137
+CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize rabitq \
+  --input data/laion100m/base.hvecs --output-dir artifacts/laion100m/rabitq \
+  --n-lists 1024 --bits 1 --training-rows 262144 --chunk-rows 8192 --seed 137
+```
+
+PQ produces `pq.pivots.bin` and `pq.codes.bin`; RaBitQ produces `rabitq.b1.bin` for `--bits 1`. Both save `parameters.json`. RaBitQ generation includes conversion to the native runtime format.
+
+Use `--row-limit` for a dataset prefix and `--dim` to validate dimensions. PQ supports 16 or 64 equal-sized, 8-bit subspaces; the input dimension must divide evenly. RaBitQ streams encoding chunks by default; `--bits 1 2` produces multiple widths and `--build-mode batch` selects a resident build. See `python3 -m scripts.quantize <pq|rabitq> --help` for all options.
+
+### Build graphs and search
+
+Follow the [configuration guide](../configs/README.md) to select the graph builders and run the matching search workload. Development checks are documented in [build.md](../docs/build.md#cpu-and-preparation-checks).
+
+## 2. Generate inputs (optional)
+
+The supplied query package is the standard input for the experiments. The query-selection tools below consume user-provided atomic candidate manifests (`SOURCE_RANGE_MANIFEST`, `query_templates.jsonl` or `query_manifest.jsonl`); they do not generate those starting candidates from raw captions. Use the supplied queries to reproduce the experiments.
+
+The preparation commands below support generating metadata, constructing predicate indexes and computing exact GT for your own inputs. Retain the supplied token map when preparing metadata for the supplied queries, so token IDs remain aligned.
 
 ### LAION tokens and attributes
 
@@ -156,27 +186,3 @@ CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.laion.range_gt \
 ```
 
 Run GPU GT jobs sequentially on an idle GPU. When computing GT in shards, split the materialized queries first, compute GT per shard, then combine. `range_gt --search-results-csv PATH` optionally also evaluates an existing result; the general [evaluation command](../docs/experiment-protocol.md#evaluation) works with all workloads. Build and search settings come from `configs/`; preparation scripts only generate input artifacts.
-
-## 2. Quantize vectors
-
-[Build](../docs/build.md) the runtime and quantizers first. Select an idle GPU and use a new output directory; existing directories are protected. These commands produce the paths already used by the supplied configurations:
-
-```bash
-CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize pq \
-  --input data/yfcc10m/base.u8bin --output-dir artifacts/yfcc10m/pq \
-  --pq-dim 64 --training-rows 65536 --chunk-rows 8192 --seed 137
-CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize rabitq \
-  --input data/arxiv/base.fvecs --output-dir artifacts/arxiv/rabitq \
-  --n-lists 1024 --bits 1 --training-rows 262144 --chunk-rows 8192 --seed 137
-CUDA_VISIBLE_DEVICES="${GPU:-0}" python3 -m scripts.quantize rabitq \
-  --input data/laion100m/base.hvecs --output-dir artifacts/laion100m/rabitq \
-  --n-lists 1024 --bits 1 --training-rows 262144 --chunk-rows 8192 --seed 137
-```
-
-PQ produces `pq.pivots.bin` and `pq.codes.bin`; RaBitQ produces `rabitq.b1.bin` for `--bits 1`. Both save `parameters.json`. RaBitQ generation includes conversion to the native runtime format.
-
-Use `--row-limit` for a dataset prefix and `--dim` to validate dimensions. PQ supports 16 or 64 equal-sized, 8-bit subspaces; the input dimension must divide evenly. RaBitQ streams encoding chunks by default; `--bits 1 2` produces multiple widths and `--build-mode batch` selects a resident build. See `python3 -m scripts.quantize <pq|rabitq> --help` for all options.
-
-## 3. Build graphs and search
-
-Follow the [configuration guide](../configs/README.md) to select the graph builders and run the matching search workload. Development checks are documented in [build.md](../docs/build.md#cpu-and-preparation-checks).

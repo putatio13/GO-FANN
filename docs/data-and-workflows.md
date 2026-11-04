@@ -19,7 +19,7 @@ LAION100M is the first 100M rows of the released 512-dimensional image embedding
 
 Graph construction writes `graph.bin`, `graph.identity.groups`, `graph.lowfreq.bin`, `graph.seed`, `graph.orig_label.seed` and `graph.metadata`. Keep these sidecars together. Search loads the serialized graph into host memory; its header identifies the format independently of the filename suffix.
 
-PQ uses `pq.pivots_path` for the pivot/codebook container and `pq.compressed_path` for row-ordered uint8 codes. RaBitQ uses `rabitq_artifact_path` for the native sample-major artifact. The [quantization commands](../scripts/README.md#2-quantize-vectors) produce these formats directly.
+PQ uses `pq.pivots_path` for the pivot/codebook container and `pq.compressed_path` for row-ordered uint8 codes. RaBitQ uses `rabitq_artifact_path` for the native sample-major artifact. The [quantization commands](../scripts/README.md#quantize-vectors) produce these formats directly.
 
 ## Queries and exact ground truth
 
