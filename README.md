@@ -29,6 +29,6 @@ Run commands from the repository root; configuration paths are relative to the w
 
 ## Credit and license
 
-GO-FANN builds on the FlashANNS implementation; see [acknowledgments](docs/acknowledgments.md) for source lineage and provenance.
+GO-FANN uses FlashANNS source with permission from its authors; see [acknowledgments](docs/acknowledgments.md).
 
-GO-FANN’s original contributions and inherited FlashANNS portions are covered by the [MIT License](LICENSE), with permission from the FlashANNS author team. Other third-party components retain their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Released under the [MIT License](LICENSE). See [third-party notices](THIRD_PARTY_NOTICES.md) for dependency licenses.
