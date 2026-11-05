@@ -6,7 +6,7 @@ The label graph/posting design also draws on VecFlow.
 
 GO-FANN uses PQ, RaBitQ, CAGRA, cuVS, RAFT, RMM and GDRCopy. The RaBitQ artifact generator includes the cuVS implementation files listed in [third-party notices](../THIRD_PARTY_NOTICES.md), with their original NVIDIA copyright and Apache-2.0 notices retained.
 
-The scoped [MIT License](../LICENSE) covers original GO-FANN contributions and grants no rights in inherited FlashANNS source. Third-party files retain their own terms; see [third-party notices](../THIRD_PARTY_NOTICES.md), including the Apache-2.0 notices for `src/index/shared_resources.hpp` and the vendored RaBitQ implementation.
+We thank the FlashANNS author team for permission to use, modify and publicly redistribute the inherited source under MIT. The [MIT License](../LICENSE) covers these portions and original GO-FANN contributions; original attribution and copyright notices are retained. Other third-party files retain their own terms; see [third-party notices](../THIRD_PARTY_NOTICES.md), including the Apache-2.0 notices for `src/index/shared_resources.hpp` and the vendored RaBitQ implementation.
 
 ## Implementation map
 

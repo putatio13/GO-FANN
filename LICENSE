@@ -1,14 +1,14 @@
 License scope
 
-The MIT license below applies only to original contributions whose copyright
-is held by GO-FANN contributors. It does not grant rights in code inherited
-from FlashANNS or other third parties, including inherited portions of modified
-files. Those rights remain with their respective copyright holders. See
-THIRD_PARTY_NOTICES.md for source attribution and applicable third-party terms.
+The MIT license below covers original GO-FANN contributions and the inherited
+FlashANNS portions, used, modified and redistributed with permission from the
+FlashANNS author team. Other third-party components retain their own licenses;
+see THIRD_PARTY_NOTICES.md for source attribution and applicable terms.
 
 MIT License
 
 Copyright (c) 2026 GO-FANN contributors
+Copyright (c) FlashANNS authors (inherited FlashANNS portions)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

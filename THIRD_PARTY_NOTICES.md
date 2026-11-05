@@ -1,8 +1,8 @@
 # Third-party notices
 
-The [MIT License](LICENSE) covers only original GO-FANN contributions. It does not grant rights in inherited third-party code, including inherited portions of modified files. Existing copyright and license notices are retained.
+The [MIT License](LICENSE) covers original GO-FANN contributions and the inherited FlashANNS portions with permission from the FlashANNS author team. Other third-party components retain their own licenses. Existing copyright and license notices are retained.
 
-GO-FANN incorporates source derived from [Tinkerver/ann_search](https://github.com/Tinkerver/ann_search), the repository linked by [FlashANNS (arXiv v1)](https://arxiv.org/html/2507.10070v1). Its upstream repository provides no repository-wide license grant. Rights in that source remain with its copyright holders. Licensing and redistribution of the inherited portions are subject to permission from those holders, separately from the MIT license for GO-FANN’s original contributions. The paper citation and implementation lineage are given in [acknowledgments](docs/acknowledgments.md).
+GO-FANN incorporates source derived from [Tinkerver/ann_search](https://github.com/Tinkerver/ann_search), the repository linked by [FlashANNS (arXiv v1)](https://arxiv.org/html/2507.10070v1). The FlashANNS author team has granted permission to use, modify and publicly redistribute these inherited portions under MIT, with source attribution, retained copyright notices and appropriate paper/project citations. Copyright in the inherited portions remains with the original FlashANNS authors. The paper citation and implementation lineage are given in [acknowledgments](docs/acknowledgments.md).
 
 | File | Retained license |
 | --- | --- |
